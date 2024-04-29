@@ -4,6 +4,7 @@ const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./helpers/traduccion.js');
 const { primeraLetra } = require('./helpers/primerLetra.js');
 const { v4: uuidv4 } = require('uuid');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,8 @@ var descuentosRaw = readFileSync('./data/descuentos.json');
 var descuentos = JSON.parse(descuentosRaw);
 
 app.use(express.json());
+
+app.use(cors());
 
 function generarID() {
     return uuidv4();
