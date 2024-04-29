@@ -16,6 +16,10 @@ function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
 
+app.get('/', (req, res) => {
+    res.send('¡Hola, mundo!');
+});
+
 app.post('/comprar', (req, res) => {
     const nuevosProductos = req.body;
     try {
