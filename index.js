@@ -3,6 +3,7 @@ const fetch = require('node-fetch').default;
 const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./helpers/traduccion.js');
 const { primeraLetra } = require('./helpers/primerLetra.js');
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +14,7 @@ var descuentos = JSON.parse(descuentosRaw);
 app.use(express.json());
 
 function generarID() {
-    return Math.random().toString(36).substr(2, 9);
+    return uuidv4();
 }
 
 app.get('/', async (req, res) => {
