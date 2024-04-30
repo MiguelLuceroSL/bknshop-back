@@ -115,7 +115,7 @@ app.get('/productos', async (req, res) => {
     let url = 'https://fakestoreapi.com/products';
     try {
         if (category) {
-            url += `/category${category}`;
+            url += `/category/${category}`;
         }
         const response = await fetch(url);
         let productos = await response.json();
